@@ -1,0 +1,35 @@
+<div class="max-w-xl mx-auto p-6 bg-white rounded-2xl ">
+
+    <h2 class="text-2xl font-bold text-gray-700 pl-4 border-l-4 border-green-500 mb-5">
+        Shipping Details
+    </h2>
+
+    <form [formGroup]="paymentForm" (ngSubmit)="paymentForm" class="space-y-5">
+
+
+        <!-- Phone -->
+        <div>
+            <label class="block mb-1 text-sm font-medium text-gray-700">Phone Number</label>
+            <input formControlName="phone" type="tel" placeholder="+20 123 456 7890" class="w-full border border-gray-300 rounded-xl px-4 py-2 focus:ring-2 focus:ring-green-500 focus:outline-none" required>
+        </div>
+
+        <!-- City -->
+        <div>
+            <label class="block mb-1 text-sm font-medium text-gray-700">City</label>
+            <input formControlName="city" type="text" placeholder="Cairo" class="w-full border border-gray-300 rounded-xl px-4 py-2 focus:ring-2 focus:ring-green-500 focus:outline-none" required>
+        </div>
+
+        <!-- Address -->
+        <div>
+            <label class="block mb-1 text-sm font-medium text-gray-700">Details</label>
+            <input formControlName="details" type="text" placeholder="123 El Tahrir St" class="w-full border border-gray-300 rounded-xl px-4 py-2 focus:ring-2 focus:ring-green-500 focus:outline-none" required>
+        </div>
+
+        <!-- Checkout Button -->
+        <div class="pt-4">
+            <button (click)="onlinePay()" type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-xl transition duration-300">
+        Proceed to Checkout
+      </button>
+        </div>
+    </form>
+</div>

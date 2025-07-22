@@ -1,0 +1,70 @@
+<section class=" flex items-center justify-center mt-5 ">
+
+
+
+    <div class="w-[70%] rounded-lg shadow-md relative my-12">
+
+        <h3 class="text-2xl text-center font-bold text-green-900  p-5">
+            Create an Account
+        </h3>
+        <div class="sm:hidden md:block flex justify-center items-center w-[35%] h-[35%] absolute bottom-[75%] left-[90%] translate-x-[-50%]">
+            <img src="/images/Sign up (1).gif" alt="">
+        </div>
+        <form [formGroup]="signUpForm" (ngSubmit)="submitRegisterForm()" class="w-[85%] mx-auto flex flex-col justify-center items-center   p-10 ">
+
+            <div class="relative z-0  mb-5 group w-[65%]">
+                <input formControlName="name" type="text" name="floating_first_name" id="floating_first_name" class="block py-2.5 px-0 w-full text-sm text-green-800 bg-transparent border-0 border-b-2 border-gray-300 appearance-none   focus:outline-none focus:ring-0 focus:border-green-600 peer"
+                    placeholder=" " required />
+                <label for="floating_first_name" class=" absolute text-sm text-green-900 font-bold  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-green-600 peer-focus:dark:text-green-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Name</label>
+            </div>
+
+            <div class="relative z-0  mb-5 group w-[65%]">
+                <input formControlName="email" type="email" name="floating_email" id="floating_email" class="block py-2.5 px-0 w-full text-sm text-green-800 bg-transparent border-0 border-b-2 border-gray-300 appearance-none   focus:outline-none focus:ring-0 focus:border-green-600 peer"
+                    placeholder="" required />
+                <label for="floating_email" class=" absolute text-sm text-green-900 font-bold  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-green-600 peer-focus:dark:text-green-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email address</label>
+            </div>
+            <div class="relative z-0  mb-5 group w-[65%]">
+                <input formControlName="password" type="password" name="floating_password" id="floating_password" class="block py-2.5 px-0 w-full text-sm text-green-800 bg-transparent border-0 border-b-2 border-gray-300 appearance-none   focus:outline-none focus:ring-0 focus:border-green-600 peer"
+                    placeholder=" " required />
+                <label for="floating_password" class=" absolute text-sm text-green-900 font-bold  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-green-600 peer-focus:dark:text-green-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Password</label>
+            </div>
+            <div class="relative z-0  mb-5 group w-[65%]">
+                <input formControlName="rePassword" type="password" name="repeat_password" id="floating_repeat_password" class="block py-2.5 px-0 w-full text-sm text-green-800 bg-transparent border-0 border-b-2 border-gray-300 appearance-none   focus:outline-none focus:ring-0 focus:border-green-600 peer"
+                    placeholder=" " required />
+                <label for="floating_repeat_password" class=" absolute text-sm text-green-900 font-bold  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-green-600 peer-focus:dark:text-green-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Confirm password</label>
+            </div>
+            <div class="relative z-0  mb-5 group w-[65%]">
+                <input formControlName="phone" type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" name="floating_phone" id="floating_phone" class="block py-2.5 px-0 w-full text-sm text-green-800 bg-transparent border-0 border-b-2 border-gray-300 appearance-none   focus:outline-none focus:ring-0 focus:border-green-600 peer"
+                    placeholder=" " required />
+                <label for="floating_phone" class=" absolute text-sm text-green-900 font-bold  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-green-600 peer-focus:dark:text-green-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Phone number (+20 123-456-7890)</label>
+            </div>
+
+
+            <button type="submit" class="text-white mt-5 bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center ">Submit</button>
+        </form>
+        <div class="w-[60%] mx-auto flex items-center text-gray-400 text-xs">
+            <div class="flex-1 border-t border-gray-400"></div>
+            <span class="px-3">OR</span>
+            <div class="flex-1 border-t border-gray-400"></div>
+        </div>
+        <div class="flex justify-center  gap-12 my-6">
+
+            <a href="#" class="bg-red-500 hover:bg-red-600 text-white w-12 h-12 flex items-center justify-center rounded-full shadow-lg transition transform hover:scale-105">
+                <i class="fas fa-envelope text-xl"></i>
+            </a>
+
+
+            <a href="#" class="bg-blue-600 hover:bg-blue-700 text-white w-12 h-12 flex items-center justify-center rounded-full shadow-lg transition transform hover:scale-105">
+                <i class="fab fa-facebook-f text-xl"></i>
+            </a>
+
+
+            <a href="#" class="bg-gray-800 hover:bg-black text-white w-12 h-12 flex items-center justify-center rounded-full shadow-lg transition transform hover:scale-105">
+                <i class="fab fa-github text-xl"></i>
+            </a>
+        </div>
+
+    </div>
+
+
+</section>
