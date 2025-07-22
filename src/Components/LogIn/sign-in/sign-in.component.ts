@@ -13,6 +13,7 @@ import { loginBoolean } from '../../../core/Enviroments/constents';
 export class SignInComponent {
   private readonly router =inject(Router);
   private readonly Auth = inject(AuthenticationService);
+  subBTN!:boolean
     signInForm:FormGroup = new FormGroup({
       email: new FormControl(null, [Validators.required, Validators.email]),
       password: new FormControl(null, [Validators.required])
@@ -25,6 +26,7 @@ export class SignInComponent {
 
 
   submitSignInForm(): void {
+    this.subBTN=true;
     console.log("Entering submitSignInForm method");
     console.log("Form Value:", this.signInForm.valid);
     if(this.signInForm.valid){
@@ -32,6 +34,7 @@ export class SignInComponent {
         next: (response) => {
           console.log('Login successful', response);
           localStorage.setItem('token', response.token);
+          this.subBTN=false;
           this.signInForm.reset();
           if (response.message === 'success') {
             setTimeout(() => {

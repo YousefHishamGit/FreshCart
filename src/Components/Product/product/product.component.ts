@@ -29,6 +29,7 @@ export class ProductComponent implements OnInit {
   ProductData!:IProduct;
   wishData!:IWishlist;
   loading!: boolean;
+  disableBTN!:boolean;
   wishIds = new Set<string>();
   ngOnInit(): void {
     
@@ -92,11 +93,13 @@ export class ProductComponent implements OnInit {
   }
 
   addToCart(id:string):void{
+    this.disableBTN=true;
     this.cartService.AddToCart(id).subscribe({
       next:(res)=>{
         console.log(res);
         this.ToastrService.success(res.message,'FreshCart');
-        this.cartService.cartNumber.next(res.numOfCartItems)
+        this.cartService.cartNumber.next(res.numOfCartItems);
+        this.disableBTN=false;
     }})
   }
 

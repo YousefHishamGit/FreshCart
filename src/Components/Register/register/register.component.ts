@@ -21,6 +21,7 @@ export class RegisterComponent {
   });
   private readonly Auth= inject(AuthenticationService)
   private readonly route = inject(Router);
+  submitLoading!:boolean;
 
 
   submitRegisterForm(): void {
@@ -28,10 +29,12 @@ export class RegisterComponent {
     console.log("Form Value:", this.signUpForm.valid);
     console.log("Form Data:", this.signUpForm.value);
     if (this.signUpForm.valid) {
+      this.submitLoading=true;
       this.Auth.signUp(this.signUpForm.value).subscribe({
         next: (response) => {
           console.log('Registration successful', response);
           localStorage.setItem('token', response.token);
+          this.submitLoading=false;
           this.signUpForm.reset();
           if (response.message === 'success') 
             { 

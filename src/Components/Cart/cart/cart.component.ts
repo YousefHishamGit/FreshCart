@@ -1,3 +1,4 @@
+import { ToastrService } from 'ngx-toastr';
 import { Component, inject, OnInit } from '@angular/core';
 import { CartService } from '../../../core/services/cart/cart.service';
 import { ICart } from '../../../core/interfaces/ICart';
@@ -12,6 +13,7 @@ import { RouterLink } from '@angular/router';
 })
 export class CartComponent implements OnInit{
   private readonly cartService=inject(CartService);
+  private readonly ToastrService=inject(ToastrService)
   cartData!:ICart;
 
 
@@ -36,6 +38,7 @@ export class CartComponent implements OnInit{
     this.cartService.removeItem(id).subscribe({
       next:(res)=>{
         this.getCartData();
+        this.ToastrService.success("The Item is Removed successfully",'FreshCart');
       }
     })
   }

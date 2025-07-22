@@ -33,7 +33,7 @@
                 <!--add to cart and heart icon-->
                 <div class="w-full flex justify-center items-center mt-8 gap-5 opacity-0 translate-y-[100%] group-hover:translate-y-0 group-hover:opacity-100 duration-500">
                     <!-- Add to Cart Button -->
-                    <button (click)="addToCart(prod._id)" class="cursor-pointer h-12 bg-green-500 text-white w-3/4 py-2 rounded-md hover:bg-green-600 duration-300">
+                    <button [disabled]="disableBTN" (click)="addToCart(prod._id)" class="cursor-pointer h-12 bg-green-500 text-white w-3/4 py-2 rounded-md hover:bg-green-600 duration-300 disabled:bg-gray-600">
                         Add to Cart
                     </button>
 
