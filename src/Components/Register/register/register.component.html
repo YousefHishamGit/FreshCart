@@ -2,17 +2,17 @@
 
 
 
-    <div class="w-[70%] rounded-lg shadow-md relative my-12">
+    <div class="w-full lg:w-[70%] rounded-lg shadow-md relative my-12">
 
         <h3 class="text-2xl text-center font-bold text-green-900  p-5">
             Create an Account
         </h3>
-        <div class="sm:hidden md:block flex justify-center items-center w-[35%] h-[35%] absolute bottom-[75%] left-[90%] translate-x-[-50%]">
+        <div class="hidden md:block flex justify-center items-center w-[35%] h-[35%] absolute bottom-[75%] left-[90%] translate-x-[-50%]">
             <img src="/images/Sign up (1).gif" alt="">
         </div>
         <form [formGroup]="signUpForm" (ngSubmit)="submitRegisterForm()" class="w-[85%] mx-auto flex flex-col justify-center items-center   p-10 ">
 
-            <div class="relative z-0  mb-5 group w-[65%]">
+            <div class="relative z-0  mb-5 group w-[95%] lg:w-[65%]">
                 <input formControlName="name" type="text" name="floating_first_name" id="floating_first_name" class="block py-2.5 px-0 w-full text-sm text-green-800 bg-transparent border-0 border-b-2 border-gray-300 appearance-none   focus:outline-none focus:ring-0 focus:border-green-600 peer"
                     placeholder=" " required />
                 <label for="floating_first_name" class=" absolute text-sm text-green-900 font-bold  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-green-600 peer-focus:dark:text-green-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Name</label>
@@ -31,7 +31,7 @@
 
             </div>
 
-            <div class="relative z-0  mb-5 group w-[65%]">
+            <div class="relative z-0  mb-5 group w-[95%] lg:w-[65%]">
                 <input formControlName="email" type="email" name="floating_email" id="floating_email" class="block py-2.5 px-0 w-full text-sm text-green-800 bg-transparent border-0 border-b-2 border-gray-300 appearance-none   focus:outline-none focus:ring-0 focus:border-green-600 peer"
                     placeholder="" required />
                 <label for="floating_email" class=" absolute text-sm text-green-900 font-bold  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-green-600 peer-focus:dark:text-green-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email address</label>
@@ -51,7 +51,7 @@
 
 
 
-            <div class="relative z-0  mb-5 group w-[65%]">
+            <div class="relative z-0  mb-5 group w-[95%] lg:w-[65%]">
                 <input formControlName="password" type="password" name="floating_password" id="floating_password" class="block py-2.5 px-0 w-full text-sm text-green-800 bg-transparent border-0 border-b-2 border-gray-300 appearance-none   focus:outline-none focus:ring-0 focus:border-green-600 peer"
                     placeholder=" " required />
                 <label for="floating_password" class=" absolute text-sm text-green-900 font-bold  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-green-600 peer-focus:dark:text-green-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Password</label>                @if (signUpForm.get('password')?.errors &&signUpForm.get('password')?.touched ) {
@@ -65,12 +65,12 @@
                     </div>
                 </div>}
             </div>
-            <div class="relative z-0  mb-5 group w-[65%]">
+            <div class="relative z-0  mb-5 group w-[95%] lg:w-[65%]">
                 <input formControlName="rePassword" type="password" name="repeat_password" id="floating_repeat_password" class="block py-2.5 px-0 w-full text-sm text-green-800 bg-transparent border-0 border-b-2 border-gray-300 appearance-none   focus:outline-none focus:ring-0 focus:border-green-600 peer"
                     placeholder=" " required />
                 <label for="floating_repeat_password" class=" absolute text-sm text-green-900 font-bold  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-green-600 peer-focus:dark:text-green-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Confirm password</label>
             </div>
-            <div class="relative z-0  mb-5 group w-[65%]">
+            <div class="relative z-0  mb-5 group w-[95%] lg:w-[65%]">
                 <input formControlName="phone" type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" name="floating_phone" id="floating_phone" class="block py-2.5 px-0 w-full text-sm text-green-800 bg-transparent border-0 border-b-2 border-gray-300 appearance-none   focus:outline-none focus:ring-0 focus:border-green-600 peer"
                     placeholder=" " required />
                 <label for="floating_phone" class=" absolute text-sm text-green-900 font-bold  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-green-600 peer-focus:dark:text-green-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Phone number (+20 123-456-7890)</label>
