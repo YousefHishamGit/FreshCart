@@ -12,10 +12,13 @@ import { RouterLink } from '@angular/router';
 import { CartService } from '../../../core/services/cart/cart.service';
 
 import { ToastrService } from 'ngx-toastr';
+import { SearchPipe } from '../../../core/pipes/search.pipe';
+import { FormsModule } from '@angular/forms';
+
 
 @Component({
   selector: 'app-product',
-  imports: [CurrencyPipe,CommonModule,RouterLink],
+  imports: [CurrencyPipe,CommonModule,RouterLink,SearchPipe,FormsModule],
   templateUrl: './product.component.html',
   styleUrl: './product.component.css'
 })
@@ -25,6 +28,7 @@ export class ProductComponent implements OnInit {
   private readonly cartService = inject(CartService)
   
   private readonly ToastrService = inject(ToastrService)
+  searchInput:string="";
 
   ProductData!:IProduct;
   wishData!:IWishlist;
