@@ -39,6 +39,7 @@ export class CartComponent implements OnInit{
       next:(res)=>{
         this.getCartData();
         this.ToastrService.success("The Item is Removed successfully",'FreshCart');
+        this.cartService.cartNumber.next(res.numOfCartItems)
       }
     })
   }
