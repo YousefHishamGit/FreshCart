@@ -17,10 +17,10 @@ export class NavbarComponent implements OnInit {
   private readonly wishlistService = inject (WishlistService)
   private readonly pLATFORM_ID = inject(PLATFORM_ID)
   private readonly cartService=inject(CartService)
-  wishCount:number=0;
+  wishCount!:number;
   countCart!:number;
   ngOnInit(): void {
-   
+    //Cart Counter
     this.cartService.getCart().subscribe({
       next:(res)=>{
         this.cartService.cartNumber.next(res.numOfCartItems)
@@ -31,6 +31,7 @@ export class NavbarComponent implements OnInit {
         this.countCart=num;
       }
     });
+    //===========================================
     // Check if the user is logged in by checking the token in localStorage
     console.log(this.countCart);
     if(isPlatformBrowser(this.pLATFORM_ID)){
@@ -44,9 +45,15 @@ export class NavbarComponent implements OnInit {
     }
   }
   //======================================
+  //wishlist Counter
+  this.wishlistService.getAllWishList().subscribe({
+    next:(res)=>{
+      this.wishlistService.wishCount.next(res.count);
+    }
+  })
   this.wishlistService.wishCount.subscribe({
-    next:(data)=>{
-      this.wishCount=data;
+    next:(num)=>{
+      this.wishCount=num;
     }
   })
 

@@ -81,6 +81,7 @@ export class ProductComponent implements OnInit {
       next:(res)=>{
         console.log(res); 
         this.ToastrService.success(res.message,'FreshCart')
+        this.wishlistService.wishCount.next(res.data.length)
         
       }
     })

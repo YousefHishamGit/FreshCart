@@ -41,6 +41,7 @@ export class WishlistComponent implements OnInit {
       next:(res)=>{
         console.log(res);
         this.getWishData();
+        this.wishlistService.wishCount.next(res.data.length)
       },
       error:(err)=>{
         console.log(err);

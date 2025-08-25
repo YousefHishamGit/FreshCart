@@ -7,7 +7,7 @@ import { environment } from '../../Enviroments/constents';
   providedIn: 'root'
 })
 export class WishlistService {
-  wishCount:BehaviorSubject<number> = new BehaviorSubject(6);
+  wishCount:BehaviorSubject<number> = new BehaviorSubject(0);
 
   constructor(private http:HttpClient) { }
   addAllProductWish(prodId:string):Observable<any>
