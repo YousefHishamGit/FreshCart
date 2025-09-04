@@ -13,12 +13,14 @@ import { WishlistComponent } from '../Components/wishlist/wishlist/wishlist.comp
 import { CategoryComponent } from '../Components/category/category/category.component';
 import { DescriptionComponent } from '../Components/description/description/description.component';
 import { PaymentComponent } from '../Components/Payment/payment/payment.component';
+import { UserOrdersComponent } from '../Components/userOrders/user-orders/user-orders.component';
+
 
 
 export const routes: Routes = [
 
     {
-        path: '',
+        path: "",
         component:AuthComponent,
         canActivate:[notLoggedGuard],
         children: [
@@ -29,7 +31,7 @@ export const routes: Routes = [
         
     },
     {
-        path: '',
+        path: "",
         component:BlankComponent,
         canActivate:[loggedGuard],
         children: [
@@ -41,6 +43,9 @@ export const routes: Routes = [
             {path:'category',component:CategoryComponent},
             {path:'description/:id',component:DescriptionComponent},
             {path:'payment/:id',component:PaymentComponent},
+            {path:'UserOrder/:id',component:UserOrdersComponent},
+
+            
             
         ]
     }

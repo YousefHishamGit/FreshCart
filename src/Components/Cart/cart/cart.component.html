@@ -65,6 +65,25 @@
                             </div>
                         </div>
                     </div>
+                    } @empty {
+                    <div class="flex flex-col items-center justify-center py-16 px-4 text-center">
+                        <!-- Icon -->
+                        <div class="w-20 h-20 rounded-full bg-gray-100 flex items-center justify-center shadow-sm">
+                            <svg class="w-10 h-10 text-gray-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.35 2.7a1 1 0 00.9 1.45h12.9m-14.8-4h14.8M10 21a1 1 0 11-2 0 1 1 0 012 0zm10 0a1 1 0 11-2 0 1 1 0 012 0z"/>
+    </svg>
+                        </div>
+
+                        <!-- Text -->
+                        <h2 class="mt-6 text-xl font-semibold text-gray-700">Your cart is empty</h2>
+                        <p class="mt-2 text-gray-500">Looks like you haven’t added anything yet.</p>
+
+                        <!-- Call to Action -->
+                        <a routerLink="/product" class="mt-6 inline-block rounded-2xl bg-green-600 px-6 py-3 text-white font-medium shadow hover:bg-green-700 transition">
+    Continue Shopping
+  </a>
+                    </div>
+
                     }
 
                 </div>

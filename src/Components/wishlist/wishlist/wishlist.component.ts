@@ -3,6 +3,8 @@ import { WishlistService } from '../../../core/services/wishlist/wishlist.servic
 import { IWishlist } from '../../../core/interfaces/IWishlist';
 
 import { CurrencyPipe, DatePipe, isPlatformBrowser } from '@angular/common';
+import { CartService } from '../../../core/services/cart/cart.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-wishlist',
@@ -15,6 +17,15 @@ export class WishlistComponent implements OnInit {
   private readonly pLATFORM_ID = inject(PLATFORM_ID)
   wishData!:IWishlist
   loading!:boolean
+    
+   
+    private readonly cartService = inject(CartService)
+    
+    private readonly ToastrService = inject(ToastrService)
+    searchInput:string="";
+  
+   
+    disableBTN!:boolean;
 
   ngOnInit(): void {
     this.loading=false;
@@ -48,6 +59,17 @@ export class WishlistComponent implements OnInit {
       }
 
     })
+  }
+
+    addToCart(id:string):void{
+    
+    this.cartService.AddToCart(id).subscribe({
+      next:(res)=>{
+        console.log(res);
+        this.ToastrService.success(res.message,'FreshCart');
+        this.cartService.cartNumber.next(res.numOfCartItems);
+        
+    }})
   }
 
 

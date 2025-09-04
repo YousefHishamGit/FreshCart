@@ -1,0 +1,120 @@
+<div class="max-w-6xl mx-auto p-6">
+    <!-- Modern Header -->
+    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4">
+        <div class="flex items-center gap-3">
+            <div class="p-2.5 bg-green-50 rounded-xl">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/>
+                </svg>
+            </div>
+            <div>
+                <h1 class="text-2xl font-bold text-gray-900">Order History</h1>
+                <p class="text-gray-500 text-sm">Your completed purchases</p>
+            </div>
+        </div>
+        <div class="flex items-center gap-2 px-4 py-2 bg-gray-50 rounded-full">
+            <span class="text-gray-900 font-medium">{{ordersData.length}}</span>
+            <span class="text-gray-500">Orders</span>
+        </div>
+    </div>
+
+    <!-- Filter Bar -->
+    <div class="flex flex-wrap gap-2 mb-6">
+        <button class="px-4 py-2 bg-green-600 text-white rounded-full text-sm font-medium">All Orders</button>
+        <button class="px-4 py-2 bg-white text-gray-600 border border-gray-200 rounded-full text-sm font-medium hover:bg-gray-50">Pending</button>
+        <button class="px-4 py-2 bg-white text-gray-600 border border-gray-200 rounded-full text-sm font-medium hover:bg-gray-50">Processing</button>
+        <button class="px-4 py-2 bg-white text-gray-600 border border-gray-200 rounded-full text-sm font-medium hover:bg-gray-50">Delivered</button>
+    </div>
+
+    <!-- Orders Grid -->
+    <div class="flex flex-col justify-between">
+        <!-- Order Card -->
+        @for (order of ordersData; track $index) {
+        <div class="mb-2.5 bg-white rounded-2xl shadow-sm hover:shadow-md transition-all p-5 border border-green-50 flex flex-col group">
+            <!-- Order Header -->
+            <div class="flex justify-between items-center mb-5 pb-3 border-b border-green-100">
+                <div>
+                    <h2 class="text-lg font-semibold text-gray-900">Order #{{order.id || order._id}}</h2>
+                    <p class="text-xs text-gray-500">{{order.createdAt | date:'mediumDate'}}</p>
+                </div>
+                <span class="flex items-center gap-1.5 text-green-700 bg-green-50 px-3 py-1.5 rounded-full text-xs font-medium">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4"/>
+                    </svg>
+                    Paid
+                </span>
+            </div>
+
+            <!-- Items -->
+            <div class="space-y-4 mb-5">
+                @for (item of order.cartItems; track $index) {
+                <div class="flex items-center gap-4">
+                    <div class="relative">
+                        <img [src]="item.product.imageCover" alt="{{item.product.title}}" class="w-16 h-16 rounded-xl object-cover" />
+                        <span class="absolute -top-2 -right-2 bg-gray-900 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">{{item.count}}</span>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <p class="text-gray-900 font-medium truncate">{{item.product.title}}</p>
+                        <p class="text-gray-500 text-sm">{{item.price | currency}} each</p>
+                    </div>
+                    <p class="font-semibold text-gray-900">{{item.count * item.price | currency}}</p>
+                </div>
+                }
+            </div>
+
+            <!-- Summary -->
+            <div class="pt-4 space-y-3 text-sm border-t border-gray-100">
+                <div class="flex justify-between">
+                    <span class="text-gray-500">Subtotal</span>
+                    <span>{{order.totalOrderPrice | currency}}</span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="text-gray-500">Tax</span>
+                    <span>{{order.taxPrice | currency}}</span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="text-gray-500">Shipping</span>
+                    <span>{{order.shippingPrice | currency}}</span>
+                </div>
+                <div class="flex justify-between font-semibold text-base pt-2">
+                    <span>Total</span>
+                    <span>{{(order.totalOrderPrice || 0) + (order.taxPrice || 10) + (order.shippingPrice || 5) | currency}}</span>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="mt-5 pt-4 border-t border-gray-100 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+                <div class="flex items-center gap-2 text-xs text-gray-500">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.104 0-2 .672-2 1.5s.896 1.5 2 1.5 2-.672 2-1.5S13.104 8 12 8zM4 12c0-2.21 3.582-4 8-4s8 1.79 8 4-3.582 4-8 4-8-1.79-8-4z"/>
+                    </svg> Credit Card •••• 4567
+                </div>
+                <div class="flex gap-2">
+                    <button class="text-xs px-3 py-1.5 border border-gray-200 text-gray-600 rounded-lg hover:bg-gray-50 transition-colors">
+                        View Details
+                    </button>
+                    <button class="text-xs px-3 py-1.5 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors">
+                        Order Again
+                    </button>
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+
+    <!-- Empty State -->
+    @if (ordersData.length === 0) {
+    <div class="text-center py-12">
+        <div class="mx-auto w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mb-5">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
+            </svg>
+        </div>
+        <h3 class="text-lg font-medium text-gray-900 mb-2">No orders yet</h3>
+        <p class="text-gray-500 mb-5">When you make a purchase, it will appear here.</p>
+        <button class="px-5 py-2.5 bg-green-600 text-white rounded-lg font-medium hover:bg-green-700 transition-colors">
+            Start Shopping
+        </button>
+    </div>
+    }
+</div>

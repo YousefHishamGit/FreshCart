@@ -1,7 +1,8 @@
+import { CartService } from './../../../core/services/cart/cart.service';
 import { Component, inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { PaymentService } from '../../../core/services/payment/payment.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-payment',
@@ -17,6 +18,8 @@ export class PaymentComponent implements OnInit{
     })
     private readonly paymentService=inject(PaymentService);
     private readonly activatedRoute=inject(ActivatedRoute);
+    private readonly router = inject(Router)
+    private readonly cartService=inject(CartService);
     cartId!:string
     onlinePayBtn:boolean=false;
 
@@ -36,7 +39,11 @@ export class PaymentComponent implements OnInit{
       this.paymentService.onlinePayment(this.cartId,this.paymentForm.value).subscribe({
         next:(res)=>{
           console.log(res)
-          open(res.session.url);
+          this.cartService.cartNumber.next(0)
+          if(res.status==='success'){
+          open(res.session.url);}
+          this.router.navigate([`/UserOrder`, this.cartId]); 
+          
         }
       })
     }
@@ -44,7 +51,10 @@ export class PaymentComponent implements OnInit{
     cashPay():void{
       console.log("cash")
       this.paymentService.cashPayment(this.cartId,this.paymentForm.value).subscribe({
-        next:(res)=>{console.log(res)}
+        next:(res)=>{console.log(res)
+          this.router.navigate([`/UserOrder`, this.cartId]); 
+          this.cartService.cartNumber.next(0)
+        }
       })
     }
 
@@ -59,5 +69,8 @@ export class PaymentComponent implements OnInit{
         else{
           this.cashPay();
         }
+
       }
+
+     
 }
