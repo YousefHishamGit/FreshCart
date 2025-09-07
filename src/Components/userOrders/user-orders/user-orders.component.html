@@ -70,15 +70,15 @@
                 </div>
                 <div class="flex justify-between">
                     <span class="text-gray-500">Tax</span>
-                    <span>{{order.taxPrice | currency}}</span>
+                    <span>{{order.totalOrderPrice*0.09| currency}}</span>
                 </div>
                 <div class="flex justify-between">
                     <span class="text-gray-500">Shipping</span>
-                    <span>{{order.shippingPrice | currency}}</span>
+                    <span>{{order.totalOrderPrice*0.05 | currency}}</span>
                 </div>
                 <div class="flex justify-between font-semibold text-base pt-2">
                     <span>Total</span>
-                    <span>{{(order.totalOrderPrice || 0) + (order.taxPrice || 10) + (order.shippingPrice || 5) | currency}}</span>
+                    <span>{{ order.totalOrderPrice*(1+0.09+0.05)| currency}}</span>
                 </div>
             </div>
 

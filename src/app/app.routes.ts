@@ -15,6 +15,9 @@ import { DescriptionComponent } from '../Components/description/description/desc
 import { PaymentComponent } from '../Components/Payment/payment/payment.component';
 import { UserOrdersComponent } from '../Components/userOrders/user-orders/user-orders.component';
 
+import { NotFoundComponent } from '../Components/not-found/not-found/not-found.component';
+import { VerifyCodeComponent } from '../Components/Verify/verify-code/verify-code.component';
+
 
 
 export const routes: Routes = [
@@ -26,7 +29,11 @@ export const routes: Routes = [
         children: [
             {path: '', redirectTo: 'sign-in', pathMatch: 'full'},
             {path: 'sign-in', component: SignInComponent},
-            {path: 'register',component: RegisterComponent}
+            {path: 'register',component: RegisterComponent},
+            {path: 'Verify',component: VerifyCodeComponent},
+
+    
+
         ]
         
     },
@@ -44,6 +51,10 @@ export const routes: Routes = [
             {path:'description/:id',component:DescriptionComponent},
             {path:'payment/:id',component:PaymentComponent},
             {path:'UserOrder/:id',component:UserOrdersComponent},
+            {path:'**',component:NotFoundComponent},
+         
+            
+
 
             
             

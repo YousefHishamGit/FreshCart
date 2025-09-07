@@ -34,6 +34,7 @@ export class ProductComponent implements OnInit {
   wishData!:IWishlist;
   loading!: boolean;
   disableBTN!:boolean;
+ 
   wishIds = new Set<string>();
   ngOnInit(): void {
     
@@ -97,6 +98,7 @@ export class ProductComponent implements OnInit {
     return this.wishData.data?.some(item => item._id === id);
   }
 
+
   addToCart(id:string):void{
     this.disableBTN=true;
     this.cartService.AddToCart(id).subscribe({
@@ -108,6 +110,9 @@ export class ProductComponent implements OnInit {
     }})
   }
 
+    getRandom():number{
+      return Math.floor(Math.random() * (21)) + 5
+    }
   }
   
 

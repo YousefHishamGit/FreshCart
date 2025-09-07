@@ -1,12 +1,12 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { AuthenticationService } from '../../../core/services/Authentication/authentication.service';
-import { ReactiveFormsModule,FormGroup,FormControl, Validators } from '@angular/forms';
+import { ReactiveFormsModule,FormGroup,FormControl, Validators, FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { loginBoolean } from '../../../core/Enviroments/constents';
 
 @Component({
   selector: 'app-sign-in',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule,FormsModule],
   templateUrl: './sign-in.component.html',
   styleUrl: './sign-in.component.css'
 })
@@ -14,10 +14,14 @@ export class SignInComponent {
   private readonly router =inject(Router);
   private readonly Auth = inject(AuthenticationService);
   subBTN!:boolean
+  email!:string
     signInForm:FormGroup = new FormGroup({
       email: new FormControl(null, [Validators.required, Validators.email]),
       password: new FormControl(null, [Validators.required])
     });
+
+   
+
 
 
 
@@ -49,6 +53,21 @@ export class SignInComponent {
       });
 
     }
+
+
+
+}
+forgetPassword(email:string):void{
+  this.Auth.forgetPassword(email).subscribe({
+    next:(res)=>{
+     if(res.statusMsg=="success")
+     {  
+      this.router.navigate(['Verify'])
+
+
+     }
+    }
+  })
 
 
 

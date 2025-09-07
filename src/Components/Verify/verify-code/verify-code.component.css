@@ -1,0 +1,13 @@
+.verify-card::after {
+    content: " ";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 25px;
+    background: #16a34ac7;
+    /* green-600 */
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+    z-index: 2;
+}
